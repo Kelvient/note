@@ -22,5 +22,5 @@ sudo yum install docker-ce docker-ce-cli containerd.io -y
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo docker run hello-world
-docker pull ubuntu:latest
+sudo docker pull ubuntu:latest
 ```
