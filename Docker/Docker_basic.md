@@ -51,8 +51,8 @@ Dockerfile是镜像描述文件，每条指令构建一层
 
 ### 让普通用户使用docker
 
-**docker进程使用Unix Socket而不是TCP端口**
 **默认情况下，Unix socket属于root用户，需要root权限才能访问。**
+
 
 解决方法1:使用sudo获取管理员权限，运行docker命令
 解决方法2:创建docker用户组，并将当前用户加入到docker用户组中
