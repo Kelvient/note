@@ -5,6 +5,7 @@
 操作系统级虚拟化
 
 使用C/S架构->分为服务端和客户端
+
 使用Go语言进行开发->是目前Go语言的重量级应用
 
 
@@ -18,7 +19,9 @@
 
 
 Docker-compose定义和运行多个容器组成的系统
+
 Swarm是Docker官方的集群管理工具
+
 Dockerfile是镜像描述文件，每条指令构建一层
 
 
@@ -69,7 +72,9 @@ docker ps                     #测试docker命令是否可以使用sudo正常使
 ### 关于Docker stop
 
 docker stop让容器停止运行后，没有执行docker rm命令删除容器
+
 执行docker system df查看资源信息，RECLAIMABLE是可回收比例
+
 docker system df -v
 
 
