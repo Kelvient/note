@@ -25,7 +25,7 @@ Dockerfile是镜像描述文件，每条指令构建一层
 ## Docker三剑客
 
 1. Docker
-2. dock-compose
+2. Docker-compose
 3. Swarm
 
 
@@ -40,7 +40,7 @@ Dockerfile是镜像描述文件，每条指令构建一层
 7. dead（死亡）
 
 
-## 镜像image状态
+## 镜像的状态
 
 1. Used（有容器实例关联）
 2. Unused（无容器实例关联）
@@ -49,6 +49,8 @@ Dockerfile是镜像描述文件，每条指令构建一层
 
 ## 零散要点
 
+### 让普通用户使用docker
+
 **docker进程使用Unix Socket而不是TCP端口**
 **默认情况下，Unix socket属于root用户，需要root权限才能访问。**
 
@@ -56,13 +58,14 @@ Dockerfile是镜像描述文件，每条指令构建一层
 解决方法2:创建docker用户组，并将当前用户加入到docker用户组中
 
 ```
-sudo groupadd docker     #添加docker用户组
-sudo gpasswd -a $USER docker     #将登陆用户加入到docker用户组中
-newgrp docker     #更新用户组
-docker ps    #测试docker命令是否可以使用sudo正常使用
+sudo groupadd docker          #添加docker用户组
+sudo gpasswd -a $USER docker  #将登陆用户加入到docker用户组中
+newgrp docker                 #更新用户组
+docker ps                     #测试docker命令是否可以使用sudo正常使用
 
 ```
 
+### 关于Docker stop
 
 docker stop让容器停止运行后，没有执行docker rm命令删除容器
 执行docker system df查看资源信息，RECLAIMABLE是可回收比例
