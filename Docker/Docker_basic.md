@@ -32,7 +32,7 @@
 3. Swarm
 
 
-## 容器的7种状态
+## 容器的状态
 
 1. created（已创建）
 2. restarting（重启中）
