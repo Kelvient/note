@@ -2,13 +2,13 @@
 
 开源的应用容器引擎
 
-操作系统级虚拟化
+使用Go语言进行开发,是Go语言的重量级应用
 
-使用C/S架构->分为服务端和客户端
+使用C/S架构,分为服务端和客户端
 
-使用Go语言进行开发->是目前Go语言的重量级应用
+服务端只能运行在Linux环境，条件为内核版本大于3.10的64位Linux系统
 
-
+应用场景：Pass云平台、持续集成和持续交付
 
 
 ## 三个基本、核心概念
@@ -18,11 +18,11 @@
 3. 仓库（Repository），保存镜像的地方
 
 
-Docker-compose定义和运行多个容器组成的系统
+**Docker-compose**定义和运行多个容器组成的系统
 
-Swarm是Docker官方的集群管理工具
+**Swarm**是Docker官方的集群管理工具
 
-Dockerfile是镜像描述文件，每条指令构建一层
+**Dockerfile**是镜像描述文件，每条指令构建一层
 
 
 ## Docker三剑客
@@ -50,12 +50,24 @@ Dockerfile是镜像描述文件，每条指令构建一层
 3. Dangling（被tag标记，悬空镜像）
 
 
+## Docker监听的3种方式
+
+1. socket文件（默认）
+2. tcp协议（远程连接）
+3. fd文件（针使用systemd的Linux系统）
+
+```
+docker -d \
+-H unix:///var/run/docker.sock \
+-H tcp://192.168.100.100 
+```
+
+
 ## 零散要点
 
 ### 让普通用户使用docker
 
 **默认情况下，Unix socket属于root用户，需要root权限才能访问。**
-
 
 解决方法1:使用sudo获取管理员权限，运行docker命令
 
@@ -63,8 +75,7 @@ Dockerfile是镜像描述文件，每条指令构建一层
 
 ```
 sudo groupadd docker          #添加docker用户组
-sudo gpasswd -a $USER docker  #将登陆用户加入到docker用户组中
-newgrp docker                 #更新用户组
+sudo usermod -aG docker USER  #将登陆用户加入到docker用户组中
 docker ps                     #测试docker命令是否可以使用sudo正常使用
 
 ```
